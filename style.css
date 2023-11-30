@@ -1,56 +1,132 @@
-/*
- * CSS File for the solution
- * Assignment 03
- * You can modify these styles but you don't have to
- */
-
-/*
- VARIABLES
-*/
 :root {
-  /* Core colours */
-  /* https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557 */
-  --colour-amaranth: #e63946;
-  --colour-peppermint: #f1faee;
-  --colour-aquaisland: #a8dadc;
-  --colour-wedgewood: #457b9d;
-  --colour-cello: #1d3557;
-
-  /* Header configuration */
-  --header-heading-colour: var(--colour-peppermint);
-
-  /* Body configuration */
-  --body-default-colour: var(--colour-cello);
-  --body-background-colour: var(--colour-peppermint);
+   /* Core colours */
+   /* https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557 */
+   --colour-amaranth: #e63946;
+   --colour-peppermint: #f1faee;
+   --colour-aquaisland: #a8dadc;
+   --colour-wedgewood: #457b9d;
+   --colour-cello: #1d3557;
+   /* Header configuration */
+   --header-heading-colour: var(--colour-peppermint);
+   /* Body configuration */
+   --body-default-colour: var(--colour-cello);
+   --body-background-colour: var(--colour-peppermint);
 }
 
-/*
-  PAGE / BODY
-*/
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--body-default-colour);
-  background-color: var(--body-background-colour);
-}
-
-main {
-  min-height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   font-family: 'Arial', sans-serif;
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   background-size: cover;
+background-image: url(lilac.jpeg);
+   background-position: center center;
+   background-color: #d87ccd;
 }
 
 
-/****** Screen reader text utility clsas *******/
+.app-container {
+   max-width: 600px;
+   margin: 20px auto;
+   background-color: #dcaae3;
+   padding: 20px;
+   border-radius: 8px;
+   justify-content: center;
+   align-items: center;
+  
+}
+
+
+h1 {
+   text-align: center;
+   color: #ffffff;
+}
+
+
+.add-task-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+  
+}
+
+
+.task-input {
+   flex: 1;
+   padding: 10px;
+   border: 1px solid #cccccc;
+   border-radius: 4px;
+   margin-right: 10px;
+}
+
+
+.add-task-button{
+   padding: 10px 20px;
+   background-color: #8e4caf;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 16px;
+   margin:1rem;
+}
+.clear-tasks-button {
+   padding: 10px 20px;
+   background-color: #8e4caf;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+
+.clear-tasks-button {
+   background-color: #d16bea;
+}
+
+
+.tasks-container {
+   display: flex;
+   flex-direction: column;
+}
+
+
+.task-item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #fff;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   padding: 10px;
+   margin-bottom: 10px;
+}
+
+
+.task-item input {
+   margin-right: 10px;
+}
+
+
+.empty-state {
+   display: none;
+   text-align: center;
+   margin-top: 20px;
+   color: #ffffff;
+}
+
+
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border-width: 0;
 }
