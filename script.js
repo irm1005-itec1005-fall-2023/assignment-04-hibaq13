@@ -1,43 +1,66 @@
-/* Assignment 04: Finishing a Todo List App
- *
- * 
- *
- */
-
-
-//
-// Variables
-//
-
-// Constants
-const appID = "app";
-const headingText = "To do. To done. ✅";
-
-// DOM Elements
-let appContainer = document.getElementById(appID);
-
-//
-// Functions
-//
-
-// Add a heading to the app container
-function inititialise() {
-  // If anything is wrong with the app container then end
-  if (!appContainer) {
-    console.error("Error: Could not find app contianer");
-    return;
-  }
-
-  // Create an h1 and add it to our app
-  const h1 = document.createElement("h1");
-  h1.innerText = headingText;
-  appContainer.appendChild(h1);
-
-  // Init complete
-  console.log("App successfully initialised");
-}
-
-//
-// Inits & Event Listeners
-//
-inititialise();
+document.addEventListener('DOMContentLoaded', function () {
+    const taskInput = document.querySelector('.task-input');
+    const addTaskButton = document.querySelector('.add-task-button');
+    const clearTasksButton = document.querySelector('.clear-tasks-button');
+    const tasksContainer = document.getElementById('tasksContainer');
+    const emptyState = document.getElementById('emptyState');
+ 
+ 
+    addTaskButton.addEventListener('click', function () {
+        const taskText = taskInput.value.trim();
+ 
+ 
+        if (taskText !== '') {
+            addTask(taskText);
+            taskInput.value = '';
+            showEmptyState();
+        }
+    });
+ 
+ 
+    clearTasksButton.addEventListener('click', function () {
+        tasksContainer.innerHTML = '';
+        showEmptyState();
+    });
+ 
+ 
+    tasksContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('delete-button')) {
+            deleteTask(event.target.parentElement.id);
+        }
+    });
+ 
+ 
+    function addTask(taskText) {
+        const taskId = Date.now().toString();
+        const taskItem = document.createElement('section');
+        taskItem.classList.add('task-item');
+        taskItem.id = taskId;
+        taskItem.innerHTML = `
+            <input type="checkbox" id="${taskId}">
+            <label for="${taskId}">${taskText}</label>
+            <button class="delete-button">Delete</button>
+        `;
+        tasksContainer.appendChild(taskItem);
+        showEmptyState();
+    }
+ 
+ 
+    function deleteTask(taskId) {
+        const taskItem = document.getElementById(taskId);
+        if (taskItem) {
+            taskItem.remove();
+            showEmptyState();
+        }
+    }
+ 
+ 
+    function showEmptyState() {
+        if (tasksContainer.children.length === 0) {
+            emptyState.style.display = 'block';
+        } else {
+            emptyState.style.display = 'none';
+        }
+    }
+ });
+ 
